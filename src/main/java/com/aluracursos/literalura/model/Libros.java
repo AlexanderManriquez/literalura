@@ -9,6 +9,15 @@ public class Libros {
     List<String> idiomas;
     int numeroDescargas;
 
+    public Libros (){}
+    
+    public Libros(DatosLibros datosLibros) {
+        this.titulo = datosLibros.titulo();
+        this.autor = datosLibros.autores();
+        this.idiomas = datosLibros.idiomas();
+        this.numeroDescargas = datosLibros.numeroDescargas().intValue();  // Convierta Long a int
+    }
+
     public int getId() {
         return id;
     }
