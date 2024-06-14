@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.aluracursos.literalura.principal.Principal;
 import com.aluracursos.literalura.services.ConsumoAPI;
+import com.aluracursos.literalura.services.LibrosService;
 
 @SpringBootApplication
 public class LiteraluraApplication implements CommandLineRunner{
