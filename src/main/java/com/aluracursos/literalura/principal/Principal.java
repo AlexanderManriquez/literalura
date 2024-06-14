@@ -3,6 +3,7 @@ package com.aluracursos.literalura.principal;
 import java.util.Scanner;
 
 import com.aluracursos.literalura.model.DatosLibros;
+import com.aluracursos.literalura.model.Libros;
 import com.aluracursos.literalura.services.ConsumoAPI;
 
 public class Principal {
@@ -38,16 +39,18 @@ public class Principal {
                 }
         }
 
-        private DatosLibros getDatosLibros() {
-            System.out.println("Escribe el id del libro a agregar: ");
-            var idLibro = teclado.nextLine();
-            var json = consumoApi.obtenerDatos(URL_BASE + idLibro);
-            System.out.println(json);
-            DatosLibros datos = conversor.obtenerDatos(json, DatosLibros.class);
-            return datos;
+    private void buscarLibro() {
+        DatosLibros datos = getDatosLibros();
+        Libros libro = new Libros(datos);
+        librosService.guardarLibro(libro);
+        System.out.println("Libro guardado: " + libro);
     }
 
-    private void buscarLibro() {
-        
+    private DatosLibros getDatosLibros() {
+        System.out.println("Escribe el id del libro a agregar: ");
+        var idLibro = teclado.nextLine();
+        var json = consumoApi.obtenerDatos(URL_BASE + idLibro);
+        DatosLibros datos = Conversor.obtenerDatos(json, DatosLibros.class);
+        return datos;
     }
 }
