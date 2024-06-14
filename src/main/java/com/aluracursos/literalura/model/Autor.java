@@ -14,7 +14,7 @@ public class Autor {
     public String getNombre() {
         return nombre;
     }
-    
+
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
@@ -40,8 +40,5 @@ public class Autor {
         return "Autor [nombre= " + nombre + ", fechaNacimiento= " + fechaNacimiento + ", fechaFallecimiento= "
                 + fechaFallecimiento + "]";
     }
-
-    
-
-    
+   
 }
