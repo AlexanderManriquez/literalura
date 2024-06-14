@@ -4,46 +4,52 @@ import java.util.List;
 
 public class Libros {
     int id;
-    String title;
-    List<Author> authors;
-    List<String> languages;
-    int download_count;
-    
+    String titulo;
+    List<Autor> autor;
+    List<String> idiomas;
+    int descargas;
+
     public int getId() {
         return id;
     }
     public void setId(int id) {
         this.id = id;
     }
-    public String getTitle() {
-        return title;
+    public String getTitulo() {
+        return titulo;
     }
-    public void setTitle(String title) {
-        this.title = title;
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
-    public List<Author> getAuthors() {
-        return authors;
+    public List<Autor> getAutor() {
+        return autor;
     }
-    public void setAuthors(List<Author> authors) {
-        this.authors = authors;
+    public void setAutor(List<Autor> autor) {
+        this.autor = autor;
     }
-    public List<String> getLanguages() {
-        return languages;
+    public List<String> getIdiomas() {
+        return idiomas;
     }
-    public void setLanguages(List<String> languages) {
-        this.languages = languages;
+    public void setIdiomas(List<String> idiomas) {
+        this.idiomas = idiomas;
     }
-    public int getDownload_count() {
-        return download_count;
+    public int getDescargas() {
+        return descargas;
     }
-    public void setDownload_count(int download_count) {
-        this.download_count = download_count;
+    public void setDescargas(int descargas) {
+        this.descargas = descargas;
     }
+    
     @Override
     public String toString() {
-        return "Libros [id=" + id + ", title=" + title + ", authors=" + authors + ", languages=" + languages
-                + ", download_count=" + download_count + "]";
+        return "Libros [id=" + id + ", titulo=" + titulo + ", autor=" + autor + ", idiomas=" + idiomas + ", descargas="
+                + descargas + "]";
     }
+
+    
+
+    
+    
     
     
     
