@@ -3,6 +3,7 @@ package com.aluracursos.literalura.principal;
 import java.util.Scanner;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.aluracursos.literalura.model.DatosLibros;
 import com.aluracursos.literalura.model.Libros;
@@ -10,6 +11,7 @@ import com.aluracursos.literalura.services.ConsumoAPI;
 import com.aluracursos.literalura.services.Conversor;
 import com.aluracursos.literalura.services.LibrosService;
 
+@Component
 public class Principal {
 
     @Autowired
