@@ -12,11 +12,7 @@ import com.aluracursos.literalura.services.LibrosService;
 @SpringBootApplication
 public class LiteraluraApplication implements CommandLineRunner{
 
-	 @Autowired
-    private ConsumoAPI consumoApi;
-
-    @Autowired
-    private LibrosService librosService;
+	
 
 	public static void main(String[] args) {
 		SpringApplication.run(LiteraluraApplication.class, args);

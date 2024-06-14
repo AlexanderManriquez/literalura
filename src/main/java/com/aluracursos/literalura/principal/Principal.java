@@ -2,13 +2,21 @@ package com.aluracursos.literalura.principal;
 
 import java.util.Scanner;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.aluracursos.literalura.model.DatosLibros;
 import com.aluracursos.literalura.model.Libros;
 import com.aluracursos.literalura.services.ConsumoAPI;
+import com.aluracursos.literalura.services.Conversor;
+import com.aluracursos.literalura.services.LibrosService;
 
 public class Principal {
+
+    @Autowired
+    private ConsumoAPI consumoApi;
+    @Autowired
+    private LibrosService librosService;
     private Scanner teclado = new Scanner(System.in);
-    private ConsumoAPI consumoApi = new ConsumoAPI();
     private final String URL_BASE = "https://gutendex.com/books/";
 
 
