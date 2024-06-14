@@ -6,22 +6,20 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.aluracursos.literalura.principal.Principal;
-import com.aluracursos.literalura.services.ConsumoAPI;
-import com.aluracursos.literalura.services.LibrosService;
 
 @SpringBootApplication
 public class LiteraluraApplication implements CommandLineRunner{
 
-	
+	@Autowired
+    private Principal principal;
 
-	public static void main(String[] args) {
-		SpringApplication.run(LiteraluraApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(LiteraluraApplication.class, args);
+    }
 
-	@Override
- 	public void run(String... args) throws Exception {
- 		Principal principal = new Principal(repository);
-		principal.mostrarMenu();
-	}
+    @Override
+    public void run(String... args) throws Exception {
+        principal.mostrarMenu();
+    }
 		
 }
