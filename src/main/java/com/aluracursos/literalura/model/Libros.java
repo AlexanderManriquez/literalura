@@ -1,51 +1,50 @@
 package com.aluracursos.literalura.model;
 
+import java.util.List;
+
 public class Libros {
-    private String titulo;
-    private String autores;
-    private String idiomas;
-    private Long numeroDescargas;
-
-    public Libros(){}
+    int id;
+    String title;
+    List<Author> authors;
+    List<String> languages;
+    int download_count;
     
-    public Libros(String titulo, String autores, String idiomas, Long numeroDescargas) {
-        this.titulo = titulo;
-        this.autores = autores;
-        this.idiomas = idiomas;
-        this.numeroDescargas = numeroDescargas;
+    public int getId() {
+        return id;
     }
-
-    public String getTitulo() {
-        return titulo;
+    public void setId(int id) {
+        this.id = id;
     }
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
+    public String getTitle() {
+        return title;
     }
-    public String getAutores() {
-        return autores;
+    public void setTitle(String title) {
+        this.title = title;
     }
-    public void setAutores(String autores) {
-        this.autores = autores;
+    public List<Author> getAuthors() {
+        return authors;
     }
-    public String getIdiomas() {
-        return idiomas;
+    public void setAuthors(List<Author> authors) {
+        this.authors = authors;
     }
-    public void setIdiomas(String idiomas) {
-        this.idiomas = idiomas;
+    public List<String> getLanguages() {
+        return languages;
     }
-    public Long getNumeroDescargas() {
-        return numeroDescargas;
+    public void setLanguages(List<String> languages) {
+        this.languages = languages;
     }
-    public void setNumeroDescargas(Long numeroDescargas) {
-        this.numeroDescargas = numeroDescargas;
+    public int getDownload_count() {
+        return download_count;
+    }
+    public void setDownload_count(int download_count) {
+        this.download_count = download_count;
     }
     @Override
     public String toString() {
-        return "Libros [titulo=" + titulo + ", autores=" + autores + ", idiomas=" + idiomas + ", numeroDescargas="
-                + numeroDescargas + "]";
+        return "Libros [id=" + id + ", title=" + title + ", authors=" + authors + ", languages=" + languages
+                + ", download_count=" + download_count + "]";
     }
-
     
-
+    
     
 }
