@@ -2,15 +2,24 @@ package com.aluracursos.literalura.model;
 
 import java.util.List;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class Libros {
-    int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    int idAPI;
     String titulo;
     List<Autor> autor;
     List<String> idiomas;
     int numeroDescargas;
 
     public Libros (){}
-    
+
     public Libros(DatosLibros datosLibros) {
         this.titulo = datosLibros.titulo();
         this.autor = datosLibros.autores();
@@ -18,12 +27,13 @@ public class Libros {
         this.numeroDescargas = datosLibros.numeroDescargas().intValue();  // Convierta Long a int
     }
 
-    public int getId() {
-        return id;
+    public int getIdAPI() {
+        return idAPI;
     }
-    public void setId(int id) {
-        this.id = id;
-    }
+
+    public void setIdAPI(int idAPI) {
+        this.idAPI = idAPI;
+    } 
 
     public String getTitulo() {
         return titulo;
@@ -55,7 +65,10 @@ public class Libros {
 
     @Override
     public String toString() {
-        return "Libros [id=" + id + ", titulo=" + titulo + ", autor=" + autor + ", idiomas=" + idiomas
+        return "Libros [idAPI=" + idAPI + ", titulo=" + titulo + ", autor=" + autor + ", idiomas=" + idiomas
                 + ", numeroDescargas=" + numeroDescargas + "]";
-    } 
+    }
+
+    
+    
 }
