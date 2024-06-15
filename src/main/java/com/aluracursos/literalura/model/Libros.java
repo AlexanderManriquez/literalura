@@ -2,21 +2,32 @@ package com.aluracursos.literalura.model;
 
 import java.util.List;
 
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 
 @Entity
 public class Libros {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    int idAPI;
-    String titulo;
-    List<Autor> autor;
-    List<String> idiomas;
-    int numeroDescargas;
+    private int idAPI;
+    private String titulo;
+    @ManyToMany
+    @JoinTable(
+        name = "libros_autores",
+        joinColumns = @JoinColumn(name = "libro_id"),
+        inverseJoinColumns = @JoinColumn(name = "autor_id")
+    )
+    private List<Autor> autor;
+    @ElementCollection
+    private List<String> idiomas;
+    private int numeroDescargas;
 
     public Libros (){}
 
@@ -65,7 +76,7 @@ public class Libros {
 
     @Override
     public String toString() {
-        return "Libros [idAPI=" + idAPI + ", titulo=" + titulo + ", autor=" + autor + ", idiomas=" + idiomas
+        return "Libros [id=" + id + ", titulo=" + titulo + ", autor=" + autor + ", idiomas=" + idiomas
                 + ", numeroDescargas=" + numeroDescargas + "]";
     }
 
