@@ -25,7 +25,9 @@ public class Principal {
     public void mostrarMenu(){
         var opcion = -1;
         while (opcion != 0){
-                var menu = """  
+                var menu = """
+                            Bienvenido a Literalura
+
                                 1 - Buscar libros
 
                                 0 - Salir
