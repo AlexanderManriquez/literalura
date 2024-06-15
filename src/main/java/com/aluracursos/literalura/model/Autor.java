@@ -1,5 +1,7 @@
 package com.aluracursos.literalura.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -10,10 +12,13 @@ public class Autor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @JsonProperty("name")
     private String nombre;
+    @JsonProperty("birth_year")
     private int fechaNacimiento;
+    @JsonProperty("death_year")
     private int fechaFallecimiento;
-    
+
     public Autor(){}
 
     public Autor(String nombre, int fechaNacimiento, int fechaFallecimiento){
