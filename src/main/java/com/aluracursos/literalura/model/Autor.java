@@ -10,9 +10,9 @@ public class Autor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    String nombre;
-    int fechaNacimiento;
-    int fechaFallecimiento;
+    private String nombre;
+    private int fechaNacimiento;
+    private int fechaFallecimiento;
 
     public Autor(String nombre, int fechaNacimiento, int fechaFallecimiento){
         this.nombre = nombre;
@@ -46,8 +46,12 @@ public class Autor {
 
     @Override
     public String toString() {
-        return "Autor [nombre= " + nombre + ", fechaNacimiento= " + fechaNacimiento + ", fechaFallecimiento= "
-                + fechaFallecimiento + "]";
+        return "Autor{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", fechaNacimiento=" + fechaNacimiento +
+                ", fechaFallecimiento=" + fechaFallecimiento +
+                '}';
     }
    
 }
