@@ -2,6 +2,7 @@ package com.aluracursos.literalura.model;
 
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -18,8 +19,8 @@ public class Libros {
     private int id;
     private int idAPI;
     private String titulo;
-    @ManyToMany
-    @JoinTable(
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable( 
         name = "libros_autores",
         joinColumns = @JoinColumn(name = "libro_id"),
         inverseJoinColumns = @JoinColumn(name = "autor_id")
