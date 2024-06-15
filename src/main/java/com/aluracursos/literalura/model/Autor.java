@@ -13,6 +13,8 @@ public class Autor {
     private String nombre;
     private int fechaNacimiento;
     private int fechaFallecimiento;
+    
+    public Autor(){}
 
     public Autor(String nombre, int fechaNacimiento, int fechaFallecimiento){
         this.nombre = nombre;
