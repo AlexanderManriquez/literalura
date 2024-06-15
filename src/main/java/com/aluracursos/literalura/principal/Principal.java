@@ -59,8 +59,27 @@ public class Principal {
     private DatosLibros getDatosLibros() {
         System.out.println("Escribe el id del libro a agregar: ");
         var idLibro = teclado.nextLine();
-        var json = consumoApi.obtenerDatos(URL_BASE + idLibro);
+    
+    // Realizar la solicitud a la API y obtener el JSON
+        var json = consumoApi.obtenerDatos(URL_BASE + idLibro + "/");
+    
+    // Imprimir el JSON recibido para verificar los datos
+        System.out.println("JSON recibido:");
+        System.out.println(json);
+
+    // Verificar si el JSON es nulo o vacío
+        if (json == null || json.isEmpty()) {
+            throw new RuntimeException("La respuesta de la API fue nula o vacía para el libro con ID: " + idLibro);
+        }
+
+    // Convertir el JSON a la clase DatosLibros
         DatosLibros datos = Conversor.obtenerDatos(json, DatosLibros.class);
+
+    // Verificar si la conversión fue exitosa
+        if (datos == null) {
+            throw new RuntimeException("No se pudieron convertir los datos del libro con ID: " + idLibro);
+        }
+
         return datos;
     }
 }
