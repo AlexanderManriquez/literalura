@@ -1,5 +1,6 @@
 package com.aluracursos.literalura.principal;
 
+import java.util.List;
 import java.util.Scanner;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +29,8 @@ public class Principal {
                 var menu = """
                             Bienvenido a Literalura
 
-                                1 - Buscar libros
+                                1 - Agregar libros
+                                2 - Buscar libros por título
 
                                 0 - Salir
 
@@ -42,6 +44,9 @@ public class Principal {
                         case 1:
                                 buscarLibro();
                                 break;
+                        case 2:
+                                buscarLibroPorTitulo();
+                                break;
                         case 0:
                                 System.out.println("Cerrando la aplicación...");
                                 break;
@@ -50,6 +55,23 @@ public class Principal {
                         }
                 }
         }
+
+    private void buscarLibroPorTitulo() {
+        System.out.println("Escribe el título del libro a buscar: ");
+        var titulo = teclado.nextLine();
+
+        // Buscar libros por título usando el servicio
+        List<Libros> librosEncontrados = librosService.buscarLibrosPorTitulo(titulo);
+
+        if (librosEncontrados.isEmpty()) {
+            System.out.println("No se encontraron libros con ese título.\n");
+        } else {
+            System.out.println("Libros encontrados:\n");
+            for (Libros libro : librosEncontrados) {
+                System.out.println(libro);
+            }
+        }
+    }
 
     private void buscarLibro() {
         DatosLibros datos = getDatosLibros();
