@@ -33,4 +33,8 @@ public class LibrosService {
         String apellido = partes.length > 1 ? partes[1] : "";
         return librosRepository.findByAutorNombreOrApellido(nombre, apellido);
     }
+
+    public List<Libros> buscarPorIdioma(String idioma) {
+        return librosRepository.findByIdioma(idioma);
+    }
 }

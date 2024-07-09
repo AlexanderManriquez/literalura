@@ -32,6 +32,7 @@ public class Principal {
                                 1 - Agregar libros
                                 2 - Buscar libros por título
                                 3 - Buscar libros por autor
+                                4 - Buscar libros por idioma
 
                                 0 - Salir
 
@@ -50,6 +51,9 @@ public class Principal {
                                 break;
                         case 3:
                                 buscarLibroPorAutor();
+                                break;
+                        case 4:
+                                buscarLibroPorIdioma();
                                 break;
                         case 0:
                                 System.out.println("Cerrando la aplicación...");
@@ -112,6 +116,19 @@ public class Principal {
         List<Libros> libros = librosService.buscarPorAutor(nombreAutor);
         if (libros.isEmpty()) {
             System.out.println("No se encontraron libros para el autor: " + nombreAutor);
+        } else {
+            System.out.println("Libros encontrados:");
+            libros.forEach(System.out::println);
+        }
+    }
+
+    private void buscarLibroPorIdioma() {
+        System.out.println("Escribe el idioma del libro: ");
+        var idioma = teclado.nextLine();
+
+        List<Libros> libros = librosService.buscarPorIdioma(idioma);
+        if (libros.isEmpty()) {
+            System.out.println("No se encontraron libros para el idioma: " + idioma);
         } else {
             System.out.println("Libros encontrados:");
             libros.forEach(System.out::println);
