@@ -31,6 +31,7 @@ public class Principal {
 
                                 1 - Agregar libros
                                 2 - Buscar libros por título
+                                3 - Buscar libros por autor
 
                                 0 - Salir
 
@@ -47,6 +48,9 @@ public class Principal {
                         case 2:
                                 buscarLibroPorTitulo();
                                 break;
+                        case 3:
+                                buscarLibroPorAutor();
+                                break;
                         case 0:
                                 System.out.println("Cerrando la aplicación...");
                                 break;
@@ -55,23 +59,6 @@ public class Principal {
                         }
                 }
         }
-
-    private void buscarLibroPorTitulo() {
-        System.out.println("Escribe el título del libro a buscar: ");
-        var titulo = teclado.nextLine();
-
-        // Buscar libros por título usando el servicio
-        List<Libros> librosEncontrados = librosService.buscarLibrosPorTitulo(titulo);
-
-        if (librosEncontrados.isEmpty()) {
-            System.out.println("No se encontraron libros con ese título.\n");
-        } else {
-            System.out.println("Libros encontrados:\n");
-            for (Libros libro : librosEncontrados) {
-                System.out.println(libro);
-            }
-        }
-    }
 
     private void buscarLibro() {
         DatosLibros datos = getDatosLibros();
@@ -84,26 +71,51 @@ public class Principal {
         System.out.println("Escribe el id del libro a agregar: ");
         var idLibro = teclado.nextLine();
     
-    // Realizar la solicitud a la API y obtener el JSON
         var json = consumoApi.obtenerDatos(URL_BASE + idLibro + "/");
     
-    // Imprimir el JSON recibido para verificar los datos
         System.out.println("JSON recibido:");
         System.out.println(json);
 
-    // Verificar si el JSON es nulo o vacío
         if (json == null || json.isEmpty()) {
             throw new RuntimeException("La respuesta de la API fue nula o vacía para el libro con ID: " + idLibro);
         }
 
-    // Convertir el JSON a la clase DatosLibros
         DatosLibros datos = Conversor.obtenerDatos(json, DatosLibros.class);
 
-    // Verificar si la conversión fue exitosa
         if (datos == null) {
             throw new RuntimeException("No se pudieron convertir los datos del libro con ID: " + idLibro);
         }
 
         return datos;
     }
+
+    private void buscarLibroPorTitulo() {
+        System.out.println("Escribe el título del libro a buscar: ");
+        var titulo = teclado.nextLine();
+
+        List<Libros> librosEncontrados = librosService.buscarLibrosPorTitulo(titulo);
+
+        if (librosEncontrados.isEmpty()) {
+            System.out.println("No se encontraron libros con ese título.\n");
+        } else {
+            System.out.println("Libros encontrados:\n");
+            for (Libros libro : librosEncontrados) {
+                System.out.println(libro);
+            }
+        }
+    }
+    
+    private void buscarLibroPorAutor() {
+        System.out.println("Escribe el nombre del autor: ");
+        var nombreAutor = teclado.nextLine();
+
+        List<Libros> libros = librosService.buscarPorAutor(nombreAutor);
+        if (libros.isEmpty()) {
+            System.out.println("No se encontraron libros para el autor: " + nombreAutor);
+        } else {
+            System.out.println("Libros encontrados:");
+            libros.forEach(System.out::println);
+        }
+    }
+
 }

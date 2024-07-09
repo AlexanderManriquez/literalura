@@ -22,9 +22,15 @@ public class LibrosService {
     public List<Libros> buscarLibrosPorTitulo(String titulo) {
         List<Libros> libros = librosRepository.findByTituloContainingIgnoreCase(titulo);
         for (Libros libro : libros) {
-            // Inicializa explícitamente la colección de autores
             libro.getAutor().size();
         }
         return libros;
+    }
+
+    public List<Libros> buscarPorAutor(String nombreCompleto) {
+        String[] partes = nombreCompleto.split("\\s+");
+        String nombre = partes[0];
+        String apellido = partes.length > 1 ? partes[1] : "";
+        return librosRepository.findByAutorNombreOrApellido(nombre, apellido);
     }
 }
