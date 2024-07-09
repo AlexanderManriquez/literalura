@@ -5,6 +5,7 @@ import java.util.List;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -19,14 +20,14 @@ public class Libros {
     private int id;
     private int idAPI;
     private String titulo;
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL , fetch = FetchType.EAGER)
     @JoinTable( 
         name = "libros_autores",
         joinColumns = @JoinColumn(name = "libro_id"),
         inverseJoinColumns = @JoinColumn(name = "autor_id")
     )
     private List<Autor> autor;
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     private List<String> idiomas;
     private int numeroDescargas;
 
@@ -80,7 +81,5 @@ public class Libros {
         return "Libros [id=" + id + ", titulo=" + titulo + ", autor=" + autor + ", idiomas=" + idiomas
                 + ", numeroDescargas=" + numeroDescargas + "]";
     }
-
-    
-    
+ 
 }

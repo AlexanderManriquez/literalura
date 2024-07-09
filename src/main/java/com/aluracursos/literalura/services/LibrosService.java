@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 
 import com.aluracursos.literalura.model.Libros;
 
+import org.springframework.transaction.annotation.Transactional;
+
 @Service
 public class LibrosService {
     @Autowired
@@ -16,7 +18,13 @@ public class LibrosService {
         librosRepository.save(libro);
     }
 
+    @Transactional(readOnly = true)
     public List<Libros> buscarLibrosPorTitulo(String titulo) {
-        return librosRepository.findByTituloContainingIgnoreCase(titulo);
+        List<Libros> libros = librosRepository.findByTituloContainingIgnoreCase(titulo);
+        for (Libros libro : libros) {
+            // Inicializa explícitamente la colección de autores
+            libro.getAutor().size();
+        }
+        return libros;
     }
 }
